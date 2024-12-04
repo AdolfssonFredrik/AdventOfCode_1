@@ -8,6 +8,7 @@ import binaryTree.Node;
 import binaryTree.Tree;
 
 import java.io.IOException;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 import static java.util.Collections.min;
@@ -19,8 +20,8 @@ public class Main {
         Tree rightTree = new Tree();
 
         Input input = new Input();
-        input.parseFile("C:\\Users\\zerox\\Java\\Eget\\AdventOfCode\\AdventOfCode_1\\src\\main\\resources\\InputTest.txt");
-        //input.parseFile("C:\\Users\\zerox\\Java\\Eget\\AdventOfCode\\AdventOfCode_1\\src\\main\\resources\\Input.txt");
+        //input.parseFile("C:\\Users\\zerox\\Java\\Eget\\AdventOfCode\\AdventOfCode_1\\src\\main\\resources\\InputTest.txt");
+        input.parseFile("C:\\Users\\zerox\\Java\\Eget\\AdventOfCode\\AdventOfCode_1\\src\\main\\resources\\Input.txt");
 
         for(int number : input.getLeftList()){
             leftTree.insert(number);
@@ -30,19 +31,20 @@ public class Main {
             rightTree.insert(number);
         }
 
-
         ArrayList<Integer> sortedLeft = new ArrayList<>(leftTree.getSortedList(leftTree.root));
         ArrayList<Integer> sortedRight = new ArrayList<>(rightTree.getSortedList(rightTree.root));
 
-        //getDifference(sortedLeft, sortedRight);
+        System.out.println("|=====The Result=====|");
+        System.out.println("\nThis is my solution to the Advent \n" +
+                "Of Code Day 1 problem\n");
 
-        rightTree.inOrderTraverse(rightTree.root);
+        getDifference(sortedLeft, sortedRight);
 
         System.out.println();
         getSimilarityScore(sortedLeft, rightTree);
 
 
-
+        System.out.println("|==================|");
     }
 
     public static void getDifference(ArrayList<Integer> sortedLeft, ArrayList<Integer> sortedRight) {
@@ -64,8 +66,14 @@ public class Main {
         for(int number : sortedLeft){
             Node searchIndex = rightTree.search(number, rightTree.root);
             if(searchIndex != null){
+                count = searchIndex.amount;
+                //System.out.println("Count: " + count);
 
-                System.out.println(searchIndex.amount);
+                product = count * number;
+                //System.out.println("Product: " + product);
+
+                sum += product;
+
             }
 
         }

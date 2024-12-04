@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Tree {
     public Node root;
     private ArrayList<Integer> sortedList;
-    public int counter = 0;
 
 
     public Tree() {
@@ -44,7 +43,7 @@ public class Tree {
     }
 
     public ArrayList<Integer> getSortedList(Node root) {
-        counter++;
+
         if (root != null) {
             getSortedList(root.left);
             for(int i = 0; i < root.amount; i++) {
@@ -59,25 +58,19 @@ public class Tree {
     public Node search(int value, Node root) {
         if(root != null) {
             if(root.value == value) {
-                System.out.println("Found: " +  root.value + ". Amount: " +  root.amount);
+                //System.out.println("Found: " +  root.value + ". Amount: " +  root.amount);
                 return root;
             }
             else if(value < root.value) {
-                search(value, root.left);
+                return search(value, root.left);
             }
             else{
-                search(value, root.right);
+                return search(value, root.right);
             }
         }
         else{
-            System.out.println("Not found");
-            return root;
+            //System.out.println("Not found");
+            return null;
         }
-        return root;
-    }
-
-
-    public int getAmount(Node root) {
-        return root.amount * root.value;
     }
 }

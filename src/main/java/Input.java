@@ -26,10 +26,8 @@ public class Input {
 
             leftList.add(Integer.parseInt(st.nextToken()));
             rightList.add(Integer.parseInt(st.nextToken()));
-            counter++;
         }
         br.close();
-        System.out.println(counter);
     }
 
     public ArrayList<Integer> getLeftList() {
