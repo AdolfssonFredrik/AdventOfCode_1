@@ -20,7 +20,6 @@ public class Main {
         Tree rightTree = new Tree();
 
         Input input = new Input();
-        //input.parseFile("C:\\Users\\zerox\\Java\\Eget\\AdventOfCode\\AdventOfCode_1\\src\\main\\resources\\InputTest.txt");
         input.parseFile("C:\\Users\\zerox\\Java\\Eget\\AdventOfCode\\AdventOfCode_1\\src\\main\\resources\\Input.txt");
 
         for(int number : input.getLeftList()){
