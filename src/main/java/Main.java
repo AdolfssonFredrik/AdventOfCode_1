@@ -48,12 +48,9 @@ public class Main {
     }
 
     public static void getDifference(ArrayList<Integer> sortedLeft, ArrayList<Integer> sortedRight) {
-        int count = 0;
         for(int i = 0; i < sortedRight.size(); i++){
             int a = sortedLeft.get(i) - sortedRight.get(i);
             difference += (a < 0) ? -a : a;
-            //System.out.println(sortedLeft.get(i) + " - " + sortedRight.get(i) + " = " + ((a < 0 )? -a : a));
-            count = i;
         }
         System.out.println("The difference is: " + difference);
     }
@@ -67,15 +64,9 @@ public class Main {
             Node searchIndex = rightTree.search(number, rightTree.root);
             if(searchIndex != null){
                 count = searchIndex.amount;
-                //System.out.println("Count: " + count);
-
                 product = count * number;
-                //System.out.println("Product: " + product);
-
                 sum += product;
-
             }
-
         }
         System.out.println("The similarity score is: " + sum);
     }

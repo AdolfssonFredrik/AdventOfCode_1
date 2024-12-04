@@ -32,16 +32,6 @@ public class Tree {
         return root;
     }
 
-    public void inOrderTraverse(Node root) {
-        if (root != null) {
-            inOrderTraverse(root.left);
-
-            System.out.print(root.value + " " + "(" + root.amount + ")" +  " ===> ");
-
-            inOrderTraverse(root.right);
-        }
-    }
-
     public ArrayList<Integer> getSortedList(Node root) {
 
         if (root != null) {
@@ -57,20 +47,19 @@ public class Tree {
 
     public Node search(int value, Node root) {
         if(root != null) {
-            if(root.value == value) {
-                //System.out.println("Found: " +  root.value + ". Amount: " +  root.amount);
+            if (root.value == value) {
+                //if value is found in tree
+                //return the node where it is found
                 return root;
-            }
-            else if(value < root.value) {
+            } else if (value < root.value) {
                 return search(value, root.left);
-            }
-            else{
+            } else {
                 return search(value, root.right);
             }
-        }
-        else{
-            //System.out.println("Not found");
+        }else{
+            //Return null if node not found
             return null;
         }
     }
 }
+
