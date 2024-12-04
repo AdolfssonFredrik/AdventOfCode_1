@@ -36,9 +36,9 @@ public class Tree {
     public void inOrderTraverse(Node root) {
         if (root != null) {
             inOrderTraverse(root.left);
-            if(root.amount > 1) {
-                System.out.print(root.value + " " + root.amount +  " ===> ");
-            }
+
+            System.out.print(root.value + " " + "(" + root.amount + ")" +  " ===> ");
+
             inOrderTraverse(root.right);
         }
     }
@@ -56,27 +56,28 @@ public class Tree {
     }
 
 
-    public void search(int value, Node root) {
+    public Node search(int value, Node root) {
         if(root != null) {
             if(root.value == value) {
-                System.out.println("Found: " + root.value);
+                System.out.println("Found: " +  root.value + ". Amount: " +  root.amount);
+                return root;
             }
             else if(value < root.value) {
                 search(value, root.left);
             }
-            else if(value > root.value) {
+            else{
                 search(value, root.right);
             }
-            else {
-                System.out.println("Not Found");
-            }
         }
+        else{
+            System.out.println("Not found");
+            return root;
+        }
+        return root;
     }
 
-    public void findDifference(ArrayList<Integer> leftList, ArrayList<Integer> rightList){
 
-
-
-
+    public int getAmount(Node root) {
+        return root.amount * root.value;
     }
 }

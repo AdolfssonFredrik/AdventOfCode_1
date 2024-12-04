@@ -1,10 +1,7 @@
 
 /*
 TODO:
- - Parse the txt file.
- - Input data into a binary tree.
- - Pair up and find distance between all the nodes (distance from smallest in right list to smallest in left list, and so on).
- - Sum the total distance
+ -
  */
 
 import binaryTree.Node;
@@ -22,7 +19,8 @@ public class Main {
         Tree rightTree = new Tree();
 
         Input input = new Input();
-        input.parseFile("C:\\Users\\zerox\\Java\\Eget\\AdventOfCode\\AdventOfCode_1\\src\\main\\resources\\Input.txt");
+        input.parseFile("C:\\Users\\zerox\\Java\\Eget\\AdventOfCode\\AdventOfCode_1\\src\\main\\resources\\InputTest.txt");
+        //input.parseFile("C:\\Users\\zerox\\Java\\Eget\\AdventOfCode\\AdventOfCode_1\\src\\main\\resources\\Input.txt");
 
         for(int number : input.getLeftList()){
             leftTree.insert(number);
@@ -32,20 +30,22 @@ public class Main {
             rightTree.insert(number);
         }
 
-        System.out.println(min(input.getLeftList()));
-
 
         ArrayList<Integer> sortedLeft = new ArrayList<>(leftTree.getSortedList(leftTree.root));
         ArrayList<Integer> sortedRight = new ArrayList<>(rightTree.getSortedList(rightTree.root));
 
+        //getDifference(sortedLeft, sortedRight);
+
         rightTree.inOrderTraverse(rightTree.root);
+
         System.out.println();
-        leftTree.inOrderTraverse(leftTree.root);
+        getSimilarityScore(sortedLeft, rightTree);
 
 
 
+    }
 
-
+    public static void getDifference(ArrayList<Integer> sortedLeft, ArrayList<Integer> sortedRight) {
         int count = 0;
         for(int i = 0; i < sortedRight.size(); i++){
             int a = sortedLeft.get(i) - sortedRight.get(i);
@@ -53,13 +53,22 @@ public class Main {
             //System.out.println(sortedLeft.get(i) + " - " + sortedRight.get(i) + " = " + ((a < 0 )? -a : a));
             count = i;
         }
-        System.out.println(count);
-
         System.out.println("The difference is: " + difference);
     }
 
-    public static void getDifference(Node leftRoot, Node rightRoot) {
+    public static void getSimilarityScore(ArrayList<Integer> sortedLeft, Tree rightTree) {
+        int count;
+        int product;
+        int sum = 0;
 
-        System.out.println(difference);
+        for(int number : sortedLeft){
+            Node searchIndex = rightTree.search(number, rightTree.root);
+            if(searchIndex != null){
+
+                System.out.println(searchIndex.amount);
+            }
+
+        }
+        System.out.println("The similarity score is: " + sum);
     }
 }
