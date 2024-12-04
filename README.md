@@ -2,10 +2,10 @@
 
 ---
 
-# :snowflake: Introduction
+# :snowflake: Introduction :snowflake:
 
---- 
 
-### This is my solution to part one and part two of the advent of code day 1 problem
+
+ This is my solution to part one and part two of the advent of code day 1 problem
 
 
